@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { AlertTriangle, CalendarClock } from "lucide-react";
+import { CreatePolicyDialog } from "@/components/CreatePolicyDialog";
 
 interface PolicyWithClient {
   id: string;
@@ -102,10 +103,15 @@ const Renewals = () => {
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Renovaciones Próximas</CardTitle>
-          <p className="text-sm text-muted-foreground">
-            Pólizas que vencen en los próximos 60 días
-          </p>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle>Renovaciones Próximas</CardTitle>
+              <p className="text-sm text-muted-foreground">
+                Pólizas que vencen en los próximos 60 días
+              </p>
+            </div>
+            <CreatePolicyDialog onSuccess={fetchRenewals} />
+          </div>
         </CardHeader>
         <CardContent>
           {policies.length === 0 ? (
