@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { toast } from "sonner";
 import { Plus, Search, Edit, Trash } from "lucide-react";
+import { CreatePolicyDialog } from "@/components/CreatePolicyDialog";
 
 interface Client {
   id: string;
@@ -124,13 +125,15 @@ const Clients = () => {
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle>Gestión de Clientes</CardTitle>
-          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogTrigger asChild>
-              <Button onClick={() => resetForm()}>
-                <Plus className="mr-2 h-4 w-4" />
-                Nuevo Cliente
-              </Button>
-            </DialogTrigger>
+          <div className="flex gap-2">
+            <CreatePolicyDialog onSuccess={fetchClients} />
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button onClick={() => resetForm()}>
+                  <Plus className="mr-2 h-4 w-4" />
+                  Nuevo Cliente
+                </Button>
+              </DialogTrigger>
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>
@@ -178,6 +181,7 @@ const Clients = () => {
               </form>
             </DialogContent>
           </Dialog>
+          </div>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="relative">

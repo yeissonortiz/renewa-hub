@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { TrendingUp, Users, FileCheck, DollarSign } from "lucide-react";
+import { CreatePolicyDialog } from "@/components/CreatePolicyDialog";
 
 interface ReportData {
   totalClients: number;
@@ -113,6 +114,9 @@ const Reports = () => {
 
   return (
     <div className="space-y-6">
+      <div className="flex justify-end mb-4">
+        <CreatePolicyDialog onSuccess={fetchReportData} />
+      </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => {
           const Icon = stat.icon;

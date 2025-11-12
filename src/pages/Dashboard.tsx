@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Calendar, TrendingUp, FileText } from "lucide-react";
+import { CreatePolicyDialog } from "@/components/CreatePolicyDialog";
 
 interface Stats {
   totalClients: number;
@@ -96,11 +97,14 @@ const Dashboard = () => {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-        <p className="text-muted-foreground mt-2">
-          Bienvenido a tu sistema de gestión de pólizas
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+          <p className="text-muted-foreground mt-2">
+            Bienvenido a tu sistema de gestión de pólizas
+          </p>
+        </div>
+        <CreatePolicyDialog />
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
